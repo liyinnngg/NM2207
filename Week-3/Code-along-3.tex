@@ -1,0 +1,1359 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Week-3: Code-along},
+  pdfauthor={Soh Li Ying},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Week-3: Code-along}
+\author{Soh Li Ying}
+\date{2023-08-27}
+
+\begin{document}
+\maketitle
+
+\hypertarget{i.-code-to-edit-and-execute}{%
+\section{I. Code to edit and
+execute}\label{i.-code-to-edit-and-execute}}
+
+\textbf{To be submitted on canvas before attending the tutorial}
+
+\hypertarget{loading-packages}{%
+\subsubsection{Loading packages}\label{loading-packages}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load package tidyverse}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.2     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v ggplot2   3.4.3     v tibble    3.2.1
+## v lubridate 1.9.2     v tidyr     1.3.0
+## v purrr     1.0.2     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\hypertarget{assigning-values-to-variables}{%
+\subsubsection{Assigning values to
+variables}\label{assigning-values-to-variables}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example a.: execute this example}
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}A\textquotesingle{}}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "A"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example b and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"Apple"}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Apple"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example c and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}} \ConstantTok{FALSE}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example d and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 5L}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example e and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{5}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example f and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 1i}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0+1i
+\end{verbatim}
+
+\hypertarget{checking-the-type-of-variables}{%
+\subsubsection{Checking the type of
+variables}\label{checking-the-type-of-variables}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example a.: execute this example}
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}A\textquotesingle{}}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example b and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"Apple"}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example c and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}} \ConstantTok{FALSE}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example d and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 5L}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example e and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{5}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Complete the code for Example f and execute it}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 1i}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "complex"
+\end{verbatim}
+
+\hypertarget{need-for-data-types}{%
+\subsubsection{Need for data types}\label{need-for-data-types}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# import the cat{-}lovers data from the csv file you downloaded from canvas}
+\NormalTok{cat\_lovers }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"cat{-}lovers.csv"}\NormalTok{)}
+\NormalTok{cat\_lovers}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 60 x 3
+##    name           number_of_cats handedness
+##    <chr>          <chr>          <chr>     
+##  1 Bernice Warren 0              left      
+##  2 Woodrow Stone  0              left      
+##  3 Willie Bass    1              left      
+##  4 Tyrone Estrada 3              left      
+##  5 Alex Daniels   3              left      
+##  6 Jane Bates     2              left      
+##  7 Latoya Simpson 1              left      
+##  8 Darin Woods    1              left      
+##  9 Agnes Cobb     0              left      
+## 10 Tabitha Grant  0              left      
+## # i 50 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute the mean of the number of cats: execute this command}
+\FunctionTok{mean}\NormalTok{(cat\_lovers}\SpecialCharTok{$}\NormalTok{number\_of\_cats)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in mean.default(cat_lovers$number_of_cats): argument is not numeric or
+## logical: returning NA
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Get more information about the mean() command using ? operator}
+\NormalTok{?}\FunctionTok{mean}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert the variable number\_of\_cats using as.integer()}
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{as.integer}\NormalTok{(cat\_lovers}\SpecialCharTok{$}\NormalTok{number\_of\_cats))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in mean(as.integer(cat_lovers$number_of_cats)): NAs introduced by
+## coercion
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the elements of the column number\_of\_cats }
+\NormalTok{cat\_lovers}\SpecialCharTok{$}\NormalTok{number\_of\_cats}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "0"                                                  
+##  [2] "0"                                                  
+##  [3] "1"                                                  
+##  [4] "3"                                                  
+##  [5] "3"                                                  
+##  [6] "2"                                                  
+##  [7] "1"                                                  
+##  [8] "1"                                                  
+##  [9] "0"                                                  
+## [10] "0"                                                  
+## [11] "0"                                                  
+## [12] "0"                                                  
+## [13] "1"                                                  
+## [14] "3"                                                  
+## [15] "3"                                                  
+## [16] "2"                                                  
+## [17] "1"                                                  
+## [18] "1"                                                  
+## [19] "0"                                                  
+## [20] "0"                                                  
+## [21] "1"                                                  
+## [22] "1"                                                  
+## [23] "0"                                                  
+## [24] "0"                                                  
+## [25] "4"                                                  
+## [26] "0"                                                  
+## [27] "0"                                                  
+## [28] "0"                                                  
+## [29] "0"                                                  
+## [30] "0"                                                  
+## [31] "0"                                                  
+## [32] "0"                                                  
+## [33] "0"                                                  
+## [34] "0"                                                  
+## [35] "0"                                                  
+## [36] "0"                                                  
+## [37] "0"                                                  
+## [38] "0"                                                  
+## [39] "0"                                                  
+## [40] "0"                                                  
+## [41] "0"                                                  
+## [42] "0"                                                  
+## [43] "1"                                                  
+## [44] "3"                                                  
+## [45] "3"                                                  
+## [46] "2"                                                  
+## [47] "1"                                                  
+## [48] "1.5 - honestly I think one of my cats is half human"
+## [49] "0"                                                  
+## [50] "0"                                                  
+## [51] "1"                                                  
+## [52] "0"                                                  
+## [53] "1"                                                  
+## [54] "three"                                              
+## [55] "1"                                                  
+## [56] "1"                                                  
+## [57] "1"                                                  
+## [58] "0"                                                  
+## [59] "0"                                                  
+## [60] "2"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the elements of the column number\_of\_cats after converting it using as.numeric()}
+\FunctionTok{as.numeric}\NormalTok{(cat\_lovers}\SpecialCharTok{$}\NormalTok{number\_of\_cats)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NAs introduced by coercion
+\end{verbatim}
+
+\begin{verbatim}
+##  [1]  0  0  1  3  3  2  1  1  0  0  0  0  1  3  3  2  1  1  0  0  1  1  0  0  4
+## [26]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  3  3  2  1 NA  0  0
+## [51]  1  0  1 NA  1  1  1  0  0  2
+\end{verbatim}
+
+\hypertarget{create-an-empty-vector}{%
+\subsubsection{Create an empty vector}\label{create-an-empty-vector}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Empty vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{()}
+
+\CommentTok{\# Type of the empty vector}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\hypertarget{create-vectors-of-type-logical}{%
+\subsubsection{Create vectors of type
+logical}\label{create-vectors-of-type-logical}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 1}
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{vector}\NormalTok{(}\StringTok{"logical"}\NormalTok{,}\AttributeTok{length=}\DecValTok{5}\NormalTok{)}
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{typeof}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 2}
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{logical}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{typeof}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 3}
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE  TRUE FALSE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{typeof}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\hypertarget{create-vectors-of-type-character}{%
+\subsubsection{Create vectors of type
+character}\label{create-vectors-of-type-character}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method }
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"character"}\NormalTok{, }\AttributeTok{length =} \DecValTok{5}\NormalTok{)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "" "" "" "" ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{typeof}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 2}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{character}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "" "" "" "" ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 3}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}q\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "A" "b" "r" "q"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\hypertarget{create-vectors-of-type-integer}{%
+\subsubsection{Create vectors of type
+integer}\label{create-vectors-of-type-integer}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 1}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"integer"}\NormalTok{, }\AttributeTok{length =} \DecValTok{5}\NormalTok{)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 0 0 0 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{typeof}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 2}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{integer}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 0 0 0 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 3}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L,2L,3L,4L,5L)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 4}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\AttributeTok{from=}\NormalTok{1L, }\AttributeTok{to=}\NormalTok{5L, }\AttributeTok{by=}\NormalTok{1L)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 5}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ 1L}\SpecialCharTok{:}\NormalTok{5L}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\hypertarget{create-vectors-of-type-double}{%
+\subsubsection{Create vectors of type
+double}\label{create-vectors-of-type-double}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 1}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"double"}\NormalTok{, }\AttributeTok{length =} \DecValTok{5}\NormalTok{)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 0 0 0 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 2}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{double}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 0 0 0 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Method 3}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{1.787}\NormalTok{, }\FloatTok{0.63573}\NormalTok{, }\FloatTok{2.3890}\NormalTok{)}
+
+\CommentTok{\# Display the contents of x}
+\FunctionTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.78700 0.63573 2.38900
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\hypertarget{implicit-coercion}{%
+\subsubsection{Implicit coercion}\label{implicit-coercion}}
+
+\hypertarget{example-1}{%
+\paragraph{Example 1}\label{example-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{1.8}\NormalTok{)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add a character to the vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(x, }\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\hypertarget{example-2}{%
+\paragraph{Example 2}\label{example-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add a number to the vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(x,}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\hypertarget{example-3}{%
+\paragraph{Example 3}\label{example-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add a logical value to the vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(x, }\ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\hypertarget{example-4}{%
+\paragraph{Example 4}\label{example-4}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Add a number to the vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(x,}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\hypertarget{explicit-coercion}{%
+\subsubsection{Explicit coercion}\label{explicit-coercion}}
+
+\hypertarget{example-1-1}{%
+\paragraph{Example 1}\label{example-1-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert the vector to type character}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(x)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\hypertarget{example-2-1}{%
+\paragraph{Example 2}\label{example-2-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert the vector to type double}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NAs introduced by coercion
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Check the type of x}
+\FunctionTok{typeof}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\hypertarget{accessing-elements-of-the-vector}{%
+\subsubsection{Accessing elements of the
+vector}\label{accessing-elements-of-the-vector}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a vector}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access one element with index 3}
+\NormalTok{x[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access elements with consecutive indices, 2 to 4: 2,3,4}
+\NormalTok{x[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10  9  8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access elements with non{-}consecutive indices, 1,3,5}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access elements using logical vector}
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 8 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Access elements using the conditional operator \textless{}}
+\NormalTok{x[x}\SpecialCharTok{\textless{}}\DecValTok{10}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 9 8 1 3 5
+\end{verbatim}
+
+\hypertarget{examining-vectors}{%
+\subsubsection{Examining vectors}\label{examining-vectors}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the length of the vector}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{length}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the type of the vector}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{typeof}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the structure of the vector}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{str}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  num [1:7] 1 10 9 8 1 3 5
+## NULL
+\end{verbatim}
+
+\hypertarget{lists}{%
+\subsubsection{Lists}\label{lists}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Initialise a named list}
+\NormalTok{my\_pie }\OtherTok{=} \FunctionTok{list}\NormalTok{(}\AttributeTok{type=}\StringTok{"key lime"}\NormalTok{, }\AttributeTok{diameter=}\DecValTok{7}\NormalTok{, }\AttributeTok{is.vegetarian=}\ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\# display the list}
+\NormalTok{my\_pie}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $type
+## [1] "key lime"
+## 
+## $diameter
+## [1] 7
+## 
+## $is.vegetarian
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print the names of the list}
+\FunctionTok{names}\NormalTok{(my\_pie)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "type"          "diameter"      "is.vegetarian"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Retrieve the element named type}
+\NormalTok{my\_pie}\SpecialCharTok{$}\NormalTok{type}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "key lime"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Retrieve a truncated list}
+\NormalTok{my\_pie[}\StringTok{"type"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $type
+## [1] "key lime"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Retrieve the element named type}
+\NormalTok{my\_pie[[}\StringTok{"type"}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "key lime"
+\end{verbatim}
+
+\hypertarget{exploring-data-sets}{%
+\paragraph{Exploring data-sets}\label{exploring-data-sets}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Install package}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"openintro"}\NormalTok{, }\AttributeTok{repos =} \StringTok{"https://cran.r{-}project.org"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Installing package into 'C:/Users/65946/AppData/Local/R/win-library/4.3'
+## (as 'lib' is unspecified)
+\end{verbatim}
+
+\begin{verbatim}
+## package 'openintro' successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+##  C:\Users\65946\AppData\Local\Temp\RtmpYZMq0G\downloaded_packages
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the package}
+\FunctionTok{library}\NormalTok{(openintro)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: airports
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: cherryblossom
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: usdata
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load package}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Catch a glimpse of the data{-}set: see how the rows are stacked one below another}
+\FunctionTok{glimpse}\NormalTok{(loans\_full\_schema)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 10,000
+## Columns: 55
+## $ emp_title                        <chr> "global config engineer ", "warehouse~
+## $ emp_length                       <dbl> 3, 10, 3, 1, 10, NA, 10, 10, 10, 3, 1~
+## $ state                            <fct> NJ, HI, WI, PA, CA, KY, MI, AZ, NV, I~
+## $ homeownership                    <fct> MORTGAGE, RENT, RENT, RENT, RENT, OWN~
+## $ annual_income                    <dbl> 90000, 40000, 40000, 30000, 35000, 34~
+## $ verified_income                  <fct> Verified, Not Verified, Source Verifi~
+## $ debt_to_income                   <dbl> 18.01, 5.04, 21.15, 10.16, 57.96, 6.4~
+## $ annual_income_joint              <dbl> NA, NA, NA, NA, 57000, NA, 155000, NA~
+## $ verification_income_joint        <fct> , , , , Verified, , Not Verified, , ,~
+## $ debt_to_income_joint             <dbl> NA, NA, NA, NA, 37.66, NA, 13.12, NA,~
+## $ delinq_2y                        <int> 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0~
+## $ months_since_last_delinq         <int> 38, NA, 28, NA, NA, 3, NA, 19, 18, NA~
+## $ earliest_credit_line             <dbl> 2001, 1996, 2006, 2007, 2008, 1990, 2~
+## $ inquiries_last_12m               <int> 6, 1, 4, 0, 7, 6, 1, 1, 3, 0, 4, 4, 8~
+## $ total_credit_lines               <int> 28, 30, 31, 4, 22, 32, 12, 30, 35, 9,~
+## $ open_credit_lines                <int> 10, 14, 10, 4, 16, 12, 10, 15, 21, 6,~
+## $ total_credit_limit               <int> 70795, 28800, 24193, 25400, 69839, 42~
+## $ total_credit_utilized            <int> 38767, 4321, 16000, 4997, 52722, 3898~
+## $ num_collections_last_12m         <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+## $ num_historical_failed_to_pay     <int> 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0~
+## $ months_since_90d_late            <int> 38, NA, 28, NA, NA, 60, NA, 71, 18, N~
+## $ current_accounts_delinq          <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+## $ total_collection_amount_ever     <int> 1250, 0, 432, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ current_installment_accounts     <int> 2, 0, 1, 1, 1, 0, 2, 2, 6, 1, 2, 1, 2~
+## $ accounts_opened_24m              <int> 5, 11, 13, 1, 6, 2, 1, 4, 10, 5, 6, 7~
+## $ months_since_last_credit_inquiry <int> 5, 8, 7, 15, 4, 5, 9, 7, 4, 17, 3, 4,~
+## $ num_satisfactory_accounts        <int> 10, 14, 10, 4, 16, 12, 10, 15, 21, 6,~
+## $ num_accounts_120d_past_due       <int> 0, 0, 0, 0, 0, 0, 0, NA, 0, 0, 0, 0, ~
+## $ num_accounts_30d_past_due        <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+## $ num_active_debit_accounts        <int> 2, 3, 3, 2, 10, 1, 3, 5, 11, 3, 2, 2,~
+## $ total_debit_limit                <int> 11100, 16500, 4300, 19400, 32700, 272~
+## $ num_total_cc_accounts            <int> 14, 24, 14, 3, 20, 27, 8, 16, 19, 7, ~
+## $ num_open_cc_accounts             <int> 8, 14, 8, 3, 15, 12, 7, 12, 14, 5, 8,~
+## $ num_cc_carrying_balance          <int> 6, 4, 6, 2, 13, 5, 6, 10, 14, 3, 5, 3~
+## $ num_mort_accounts                <int> 1, 0, 0, 0, 0, 3, 2, 7, 2, 0, 2, 3, 3~
+## $ account_never_delinq_percent     <dbl> 92.9, 100.0, 93.5, 100.0, 100.0, 78.1~
+## $ tax_liens                        <int> 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+## $ public_record_bankrupt           <int> 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0~
+## $ loan_purpose                     <fct> moving, debt_consolidation, other, de~
+## $ application_type                 <fct> individual, individual, individual, i~
+## $ loan_amount                      <int> 28000, 5000, 2000, 21600, 23000, 5000~
+## $ term                             <dbl> 60, 36, 36, 36, 36, 36, 60, 60, 36, 3~
+## $ interest_rate                    <dbl> 14.07, 12.61, 17.09, 6.72, 14.07, 6.7~
+## $ installment                      <dbl> 652.53, 167.54, 71.40, 664.19, 786.87~
+## $ grade                            <fct> C, C, D, A, C, A, C, B, C, A, C, B, C~
+## $ sub_grade                        <fct> C3, C1, D1, A3, C3, A3, C2, B5, C2, A~
+## $ issue_month                      <fct> Mar-2018, Feb-2018, Feb-2018, Jan-201~
+## $ loan_status                      <fct> Current, Current, Current, Current, C~
+## $ initial_listing_status           <fct> whole, whole, fractional, whole, whol~
+## $ disbursement_method              <fct> Cash, Cash, Cash, Cash, Cash, Cash, C~
+## $ balance                          <dbl> 27015.86, 4651.37, 1824.63, 18853.26,~
+## $ paid_total                       <dbl> 1999.330, 499.120, 281.800, 3312.890,~
+## $ paid_principal                   <dbl> 984.14, 348.63, 175.37, 2746.74, 1569~
+## $ paid_interest                    <dbl> 1015.19, 150.49, 106.43, 566.15, 754.~
+## $ paid_late_fees                   <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Selecting numeric variables}
+\NormalTok{loans }\OtherTok{\textless{}{-}}\NormalTok{ loans\_full\_schema }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# \textless{}{-}{-} pipe operator}
+  \FunctionTok{select}\NormalTok{(paid\_total, term, interest\_rate,}
+\NormalTok{         annual\_income,paid\_late\_fees,debt\_to\_income)}
+\CommentTok{\# View the columns stacked one below another}
+\FunctionTok{glimpse}\NormalTok{(loans)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 10,000
+## Columns: 6
+## $ paid_total     <dbl> 1999.330, 499.120, 281.800, 3312.890, 2324.650, 873.130~
+## $ term           <dbl> 60, 36, 36, 36, 36, 36, 60, 60, 36, 36, 60, 60, 36, 60,~
+## $ interest_rate  <dbl> 14.07, 12.61, 17.09, 6.72, 14.07, 6.72, 13.59, 11.99, 1~
+## $ annual_income  <dbl> 90000, 40000, 40000, 30000, 35000, 34000, 35000, 110000~
+## $ paid_late_fees <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+## $ debt_to_income <dbl> 18.01, 5.04, 21.15, 10.16, 57.96, 6.46, 23.66, 16.19, 3~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Selecting categoric variables}
+\NormalTok{loans }\OtherTok{\textless{}{-}}\NormalTok{ loans\_full\_schema }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(grade, state, homeownership, disbursement\_method) }
+\CommentTok{\# type the chosen columns as in the lecture slide}
+\CommentTok{\# View the columns stacked one below another}
+\FunctionTok{glimpse}\NormalTok{(loans)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 10,000
+## Columns: 4
+## $ grade               <fct> C, C, D, A, C, A, C, B, C, A, C, B, C, B, D, D, D,~
+## $ state               <fct> NJ, HI, WI, PA, CA, KY, MI, AZ, NV, IL, IL, FL, SC~
+## $ homeownership       <fct> MORTGAGE, RENT, RENT, RENT, RENT, OWN, MORTGAGE, M~
+## $ disbursement_method <fct> Cash, Cash, Cash, Cash, Cash, Cash, Cash, Cash, Ca~
+\end{verbatim}
+
+\end{document}

@@ -1,0 +1,309 @@
+---
+title: "R Notes"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<style>
+p.comment {
+background-color: #DBDBDB;
+padding: 10px;
+border: 1px solid black;
+margin-left: 25px;
+border-radius: 5px;
+font-style: italic;
+}
+
+</style>
+
+##Installing, running and importing data
+**library(*package_name*)** - load R package 
+
+
+## Creating, listing and deleting objects in memory:
+**<- / ->** Creating an object with the "assign" operator
+
+**ls()**: lists the object in memory 
+
+**pat = **: (pattern) lists only the objects which CONTAINS a given character
+```{r, eval=FALSE,echo=TRUE}
+ls(pat = "m")
+``` 
+To restrict list to names that STARTS with the character
+```{r, eval=FALSE,echo=TRUE}
+ls(pat = "^m")
+```
+
+## List of useful commands:
+**read_csv**("*name_of_file.csv*")** - Import dataset into R.
+
+**? / help() / help("")** -  Find out more about command.  
+(The last one MUST be used to access non-conventional characters such as *)
+
+**glimpse(*data_file_name*)** - Display all the columns of the variable stacked one below another.
+
+**head(*data_file_name*)** -  Display the first few rows of the data-set to get an overview of its structure.
+
+**addNA** – Create a new factor/vector with an additional category representing NA (missing values).  
+
+**$** – Operator to extract a specific portion of data.
+
+**%>%** – Pipe operator that passes the output of one function as an input to another.  
+**filter(*row_attributes*)** – Subset rows using column values.  
+**select(*col_names*)** – Subset column using their names/types.  
+```{r, eval=FALSE,echo=TRUE}
+dataset_name %>% filter(coloumn_name%in%dataset) %>% select(coloumns_required)
+```
+
+## Creating vectors & lists: 
+**list()** – Create a list object containing function arguments.  
+**as.list() – Convert an object into a list
+
+## Mathematical functions:
+**abs()** – Compute the absolute value of a numeric data object.
+**aggregate** – Compute summary statistics of subgroups of a data set.
+**ave()** – Calculate averages.  
+**ceiling()** – Round numeric up to the next higher integer. 
+**IQR()** – Compute the Interquartile Range.  
+**sum()** – Compute the sum of a numeric input vector.  
+
+
+## Converting datatypes: 
+**as.data.frame** – Coerce object to data frame.  
+**as.double/as.numeric/as.str** – Convert a data object to double class/ numeric class/ str class.  
+**as.factor** – Convert a data object to the class factor.  
+**as.function** – Convert an object to a function.  
+**as.name** – Convert character string to name class object.    
+
+## Strings:
+**str_c [stringr]** – Combine several inputs into a single character vector.  
+**str_count [stringr]** – Count number of matches in a character string.  
+**str_detect [stringr]** – Detect presence or absence of pattern in character string.  
+**str_dup [stringr]** – Duplicate and concatenate strings within a character vector.  
+**str_extract [stringr]** – Extract matching patterns from character string.  
+**str_length [stringr]** – Return the length of a string.  
+**str_locate [stringr]** – Locate the first position of patterns in a character string.  
+**str_locate_all [stringr]** – Locate the position of patterns in a character string.  
+**str_order [stringr]** – Order a vector of character strings.  
+**str_remove [stringr]** – Remove FIRST matched patterns in a character string.  
+**str_remove_all [stringr]** – Remove ALL matched patterns in a character string.  
+**str_replace [stringr]** – Replace FIRST matched patterns in character strings.  
+**str_replace_all [stringr]** – Replace ALL matched patterns in character strings.  
+**str_replace_na [stringr]** – Replace NA values in a character string.  
+**str_sort [stringr]**v – Sort a vector of character strings.  
+**vstr_split [stringr]** – Split up a string into pieces.  
+**str_split_fixed** [stringr] – Split up a string into a fixed amount of pieces.  
+**str_trim [stringr]** – Trim whitespace from a character string.  
+**str_which [stringr]** – Identify positions in a character string matching a pattern.  
+**str_wrap[stringr]** – Wrap a character string into nicely formatted paragraphs.  
+**str** – Compactly display the structure of a data object. 
+
+
+##Visualising data:
+
+### Graph plots:
+**abline** – Add straight lines to plot.
+**box** – Draw a border around a plot.  
+
+
+### Other plots: 
+**barplot** – Create a barplot.  
+**boxplot** – Create a boxplot.  
+
+## Beautify tables/arrays
+**addmargins** – Put margins on tables or arrays.  
+
+
+## Other functions: 
+**all** – Check whether all values of a logical vector are TRUE.  
+**any** – Check whether any values of a logical vector are TRUE.  
+**apply** – Apply function by rows or columns of a data frame.  
+**approx** – Return a list of values that linearly interpolate given data points.  
+**apropos** – Return character vector with names of objects that contain the input.  
+**arrange** – Order data frames and tibbles.  
+**casefold** – Translate character to lower or upper case.  
+**chartr(*old*, *new*, *x*)** – Character translation/replacement  
+cat("- *old* = A character vector specifying characters to be replaces")  
+cat("-*new* = A character vector specifying the corresponding replacement characters")  
+cat("- *x* = A character vector in which replacement will occur")  
+**floor** – Round numeric down to the next lower integer.  
+
+## Creating loops & iterations: 
+**break** – Break for-loop in R.  
+**if_else** [dplyr] – Conditionally select an element.  
+**ifelse** – Select elements conditionally.  
+
+
+
+
+clip – Specify the clipping region of a graphic.
+coalesce [dplyr] – Replace missing values.
+combine [dplyr] – Combine values.
+digits [TeachingDemos] – Add straight lines to plot.
+dnorm – Create standard normal distribution.
+download.file – Download file from internet.
+duplicated – Determine duplicate elements.
+eval – Evaluate an expression and return the result.
+everything [tidyselect] – Select all variables of a data set.
+exists – Check whether an object is defined in the R environment.
+exp – Compute exponentials.
+find – Return location where objects of a given name can be found.
+
+geom_bar – Create a barplot.
+geom_boxplot [ggplot2] – Create a boxplot.
+geom_curve [ggplot2] – Add curve to ggplot2 plot.
+geom_histogram [ggplot2] – Draw a histogram.
+geom_line [ggplot2] – Draw a line graph.
+geom_segment [ggplot2] – Add line segment to ggplot2 plot.
+get – Search and call a data object.
+hist – Create histogram.
+identity – Return a data object.
+
+
+is.data.frame – Test if object is a data frame.
+is.double – Test whether a data object has the double class.
+is.function – Test if an object is a function.
+is.na – Return a logical vector or matrix indicating which elements are missing.
+is.name – Test whether a data object has the class name.
+is.nan – Return a logical vector or matrix indicating which elements are not a number.
+is.null – Return a logical value indicating whether a data object is of the data class NULL.
+isprime [matlab] – Check for prime number.
+lapply – Apply function to all list elements.
+length – Return the length of data objects such as vectors or lists.
+load – Load RData workspace file into R.
+log – Compute logarithms of numeric values.
+log10 – Compute logarithms of numeric values with base of 10.
+log2 – Compute logarithms of numeric values with base of 2.
+ls – Return the names of data objects in an environment.
+match – Return position of first match between two data objects.
+max – Compute the maximum value of a vector or column.
+mean – Compute the arithmetic mean.
+median – Compute the median.
+merge – Merge data frames.K
+na.omit – Remove incomplete cases of a data object.
+na_if [dplyr] – Replace NA values.
+names – Return or set the names of a data object.
+nchar – Return the number of elements (e.g. letters) of a character object.
+ncol – Return the number of columns of a matrix or data frame.
+near [dplyr] – Compare numeric vectors.
+next – Skip certain parts of for-loop in R.
+norm – Compute the norm of a matrix.
+nrow – Return the number of rows of a matrix or data frame.
+nth [dplyr] – Extract certain values from vector.
+ntile [dplyr] – Rank a vector.
+order – Return position of each input element in ascending or descending order.
+paste – Concatenate inputs to string.
+paste0 – Concatenate inputs to string with given separator.
+percent [formattable] – Format number as percentage.
+percent [scales] – Format number as percentage.
+percent_rank [dplyr] – Rank a vector.
+plnorm – Return corresponding value of log normal CDF.
+plogis – Return corresponding value of logistic CDF.
+plot – Draw a scatterplot or density plot.
+pnorm – Return value of distribution function.
+polygon – Draw a polygon to a plot.
+ppois – Return value of poisson cumulative distribution function.
+print – Return data object to the R (or RStudio) console.
+pull [dplyr] – Extract columns of data frame or tibble.
+punif – Return corresponding value of uniform CDF.
+qqline – Add theoretical line to QQplot.
+qqnorm – Create a normal QQplot.
+qqplot – Create QQplot of two data sets.
+quit – Terminate an R session.
+range – Get the minimum and maximum of a data object.
+rank – Return ranking position of input.
+read.xlsx – Read Excel File in R.
+read_excel [readxl Package] – Read Excel File in R.
+remove – Clear specific data object from R workspace.
+rename [dplyr] – Rename variables of data frame or tibble.
+reorder – Reorder Levels of Factor.
+rep – Replicate elements of vectors and lists.
+replace – Exchanges values in data object.
+replicate – Perform a repeated evaluation of an expression.
+return – Return output of user-defined R function.
+rm – Clear specific data object from R workspace.
+round – Round numeric to specified number of decimal places.
+row.names – Get or set row names of data frame or matrix.
+row – Return row indices and labels.
+rowMeans – Compute the mean of each row of a numeric data frame, matrix or array.
+rowMedians [robustbase] – Compute the median of each row of a numeric matrix.
+rowSums – Compute the sum of each row of a numeric data frame, matrix or array.
+sapply – Apply function to all list elements and convert output to vector.
+save.image – Save global R environment as RData workspace file.
+save – Save R data objects as RData workspace file.
+scale – Standardize data.
+sd – Compute standard deviation.
+search – Return a list of attached packages and objects.
+select [dplyr] – Select variables of data frame or tibble.
+seq – Generate sequence of numeric values.
+signif – Round numeric to specified number of digits.
+slice [dplyr] – Extract certain rows of data set.
+solve – Solve system of equations.
+sort.int – Return input in ascending or descending order.
+sort.list – Return position of each element of a single input.
+sort – Return input in ascending or descending order.
+split – Divide data into groups.
+sqrt – Compute the square root of a numeric data object.
+stat_qq [ggplot2] – Create a QQplot.
+stat_qq_line [ggplot2] – Add theoretical line to QQplot.
+std.error [plotrix] – Compute standard error in R.
+stop – Generate error message and stop executing the current R code.
+stopifnot – Check if all expressions are TRUE.
+
+structure – Set additional attributes of a data object.
+sub – Replace first match in character string.
+substr – Extract or replace a substring in a character vector.
+substring – Extract or replace a substring in a character vector.
+
+summary – Compute summary statistics of data and model objects.
+tail – Return the last part of a data object.
+tapply – Apply function to multiple data groups.
+tolower – Translate character to lower case.
+toupper – Translate character to upper case.
+trunc – Cut off decimal places of a numeric input.
+type.convert – Convert data object to appropriate class.
+unique – Remove duplicates from data objects.
+var – Compute sample variance.
+which – Return indices of certain values based on logical condition.
+which.max – Determine location of first maximum.
+which.min – Determine location of first minimum.
+with – Evaluates expression in environment constructed based on data frame.
+within – Evaluates expression in environment and modify data frame.
+write_clip – Copy data to the clipboard.
+
+## Other useful commands 
+```{r, eval=FALSE,echo=TRUE}
+<br>: Add on the next line to create an empty line 
+``` 
+**(2 double spaces)**: Next line
+
+
+## Keyboard shortcuts:
+**Ctrl + Shift + K**: Output doc in format specified in your YAML header 
+
+**Ctrl + Shift + F10**: Restart R session to start w a clean env
+
+**Ctrl + Alt + P**: Run all chunks above your current chunk
+
+**Ctrl + Enter**: Run current line of code
+
+**Ctrl + Alt + R**: Run all chunks
+
+## Code Chunk Options:
+**echo = FALSE**: Hide the code, but run code and produce all outputs, plots, warnings and messages
+
+**eval = FALSE**: Show code, but do not evaluate it
+
+**fig.show = "hide"**: Hides plots
+
+**include = FALSE**: Runs code, but suppresses all output
+
+**message = FALSE**: Prevent packages from printing messages when they load. This also suppress messages generated by functions.
+
+**results = "hide"**: Hides printed output.
+
+**warning = FALSE**: Prevents packages and functions from displaying warnings.

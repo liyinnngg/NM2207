@@ -1,0 +1,238 @@
+---
+  title: "Challenge-7"
+  author: "Soh Li Ying"
+  date: "`r Sys.Date()`"
+  output:
+    pdf_document: default
+    'pdf_document: default': default
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+  
+```{r, eval=T,echo=TRUE}
+options(repos = c(CRAN = 'https://cloud.r-project.org/'))
+
+library(tidyverse)
+install.packages("palmerpenguins")
+library(palmerpenguins)
+glimpse(penguins)
+  
+  ggplot(penguins) +
+    aes(x = bill_depth_mm, 
+      y = bill_length_mm,
+      colour = species) +
+        geom_point() + 
+          scale_colour_viridis_d()
+
+# diff color for diff species
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm,
+                       colour = species) + 
+                        geom_point() + scale_colour_viridis_d()
+
+# diff color for diff species, diff shape for diff islands
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm,
+                       colour = species, shape = island) + 
+                        geom_point() + scale_colour_viridis_d()
+
+# diff shape & color for diff species
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm,
+                       colour = species, shape = species) + 
+                        geom_point() + scale_colour_viridis_d()
+
+# diff sizes of data points according to corresponding data value (body mass)
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm,
+                       colour = species, shape = species, size = body_mass_g) + 
+                        geom_point() + scale_colour_viridis_d()
+
+# transparency of data points according to corresponding data values (flipper length)
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm, colour = species, shape = species, size = body_mass_g, alpha = flipper_length_mm) +
+  geom_point() + scale_colour_viridis_d()
+
+# mapping
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm,
+                       size = body_mass_g, alpha = flipper_length_mm) + 
+                      # output is dependent on values of datapoints
+                        geom_point() 
+
+# setting
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm,
+                       colour = species) + 
+                        geom_point(size = 2, alpha = 0.5) 
+                        # size & transparency of datapoints are pre-specified 
+
+# Faceting - creating 2D grids
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm) + 
+                        geom_point() + 
+                          facet_grid(species ~ island) # rows ~ columns 
+
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm) + geom_point() + 
+                          facet_grid(species ~ sex)
+
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm) + geom_point() + 
+                          facet_grid(sex ~ species)
+
+# 1 dimensional facets - facet_wrap()
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm) + geom_point() + 
+                          facet_wrap(~ species)
+
+# specifying the # of columns 
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm) + geom_point() + 
+                          facet_wrap(~ species, ncol = 2)
+
+# specifying the # of columns 
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm) + geom_point() + 
+                          facet_wrap(~ species, ncol = 2)
+
+# 1 dimensional facets with facet_grid()
+ggplot(penguins) + aes(x= bill_depth_mm,y = bill_length_mm) + geom_point() + 
+                          facet_grid(. ~ species) # replacing variable with "." 
+
+# facet & colour
+# specifying the # of columns 
+ggplot(penguins, aes(x= bill_depth_mm,y = bill_length_mm, color = species)) +
+  geom_point() + facet_grid(species ~ sex) + scale_colour_viridis_d() # diff colours for diff rows (diff species)
+
+# removing legend 
+ggplot(penguins, aes(x= bill_depth_mm,y = bill_length_mm, color = species)) +
+  geom_point() + facet_grid(species ~ sex) + scale_colour_viridis_d() + guides(color = "none") 
+
+```
+<br>
+
+```{r, eval=T,echo=TRUE}
+## Visualizing numeric variables
+install.packages("openintro")
+library(openintro)
+glimpse(loans_full_schema)
+
+loans <- loans_full_schema %>%
+  select(loan_amount, interest_rate, term, grade, state, 
+         annual_income, homeownership, debt_to_income)
+glimpse(loans)
+
+# histograms to identify frequency of occurance
+ggplot(loans) + aes(x = loan_amount) +
+  geom_histogram() # specify histogram
+
+# changing bin widths of histograms
+ggplot(loans) + aes(x = loan_amount) +
+  geom_histogram(bin_width = 1000) # specify desired bin width
+
+ggplot(loans) + aes(x = loan_amount) +
+  geom_histogram(bin_width = 1500)
+
+ggplot(loans) + aes(x = loan_amount) +
+  geom_histogram(bin_width = 3000)
+
+
+# customizing histograms 
+ggplot(loans) + aes(x = loan_amount) + geom_histogram(bin_width = 5000) +
+  labs(x = "Loan amount ($)", y = "Frequency", 
+       title = "Amounts of Lending Club loans")
+
+
+# Fill with a categorical variable 
+ggplot(loans, aes(x = loan_amount, fill = homeownership)) + 
+  # diff colours of diff data under "homeownership" variable
+  geom_histogram(binwidth = 5000, alpha = 0.5) + 
+  labs (x = "Loan amount($)", y = "Frequency", title = "Amounts of Lending Club loans")
+
+# Facet w categorical variable 
+ggplot(loans, aes(x = loan_amount, fill = homeownership)) + geom_histogram(binwidth = 5000) +
+  labs(x = "Loan amount ($)", y = "Frequency", title = "Amounts of Lending Club loans" ) + 
+  facet_wrap(~ homeownership, nrow = 3) # specify 3 rows 
+
+## density plots 
+# provides probability density of data in each range 
+(# of times in a certain range occur over the total # of values in variable)
+ggplot(loans, aes(x = loan_amount)) + 
+  geom_density() # specify geom_density 
+
+# adjusting bandwidths of density plots 
+ggplot(loans, aes(x = loan_amount)) + 
+  geom_density(adjust = 1)
+
+ggplot(loans, aes(x = loan_amount)) + 
+  geom_density(adjust = 0.5)
+
+ggplot(loans, aes(x = loan_amount))+
+  geom_density(adjust = 2)
+
+# customizing density plots 
+ggplot(loans, aes(x = loan_amount)) + 
+  geom_density(adjust = 2) + labs(x = "Loan amount ($)", y = "Density", title = "Amounts of Lending Club loans")
+# specifying x and y axis, title of graph
+
+# Adding a categorical variable
+ggplot(loans, aes(x = loan_amount, fill = homeownership)) + 
+  # density plots based on variable "homeownership"
+  geom_density(adjust = 2, alpha = 0.5)+ # opacity of points  
+  labs(x = "Loan amount ($)", y = "Density", title = "Amounts of Lending Club loans", 
+       fill = "Homeownership") # specify colour of graphs according to "Homeownership" types
+
+## Box Plots
+# simple box plot 
+ggplot(loans, aes(x = interest_rate)) + 
+  geom_boxplot() # specify of boxplot type 
+
+# box plot of annual_income 
+ggplot(loans, aes(x = annual_income)) +
+  geom_boxplot()
+
+# customizing box plots
+ggplot(loans, aes(x = interest_rate)) + geom_boxplot() + labs(x = "Interest Rate (%)", y = NULL, 
+  title = "Interest rates of Lending Club loans") + 
+  theme(axis.ticks.y = element_blank(), axis.text.y = element_blank())
+
+# adding a categoric variable 
+ggplot(loans, aes(x = interest_rate, y = grade)) + # splits data of varying grades into individual boxplots
+  geom_boxplot() + 
+  labs(x = "Interest rate(%)", y = "Grade", title = "Interest rates of Lending Club loans")
+
+# Scatterplots 
+ggplot(loans, aes(x = debt_to_income, y = interest_rate)) + 
+  geom_point() # specifying scatterplots
+
+# hexplots - to be used when plots are too densely congregated together
+ggplot(loans, aes(x = debt_to_income, y = interest_rate)) + 
+  geom_hex()
+
+# limiting the data to those that are of < 100
+ggplot(loans %>% filter(debt_to_income < 100), 
+       aes(x = debt_to_income, y = interest_rate)) + 
+  geom_hex()
+
+# barplots 
+ggplot(loans, aes(x = homeownership)) + 
+  geom_bar()
+
+# segmented barplots 
+ggplot(loans, aes(x = homeownership, 
+                  fill = grade))+ # fill barplots by mapping them to their respective grades
+  geom_bar()
+
+# creating barplots of the same height 
+ggplot(loans, aes(x = homeownership, fill = grade))+
+  geom_bar(position = "fill") # identify the proportion of each grade in its respective homeownership type
+  
+# Horizontal barplots by setting variable as y-axis
+ggplot(loans, aes( y= homeownership, fill = grade)) + geom_bar(position = "fill") +
+  labs( x = "Proportion", y = "Homeownership", fill = "Grade", title = "Grades of Lending Club loans")
+
+# Violin plots 
+ggplot(loans, aes(x = homeownership, y = loan_amount)) + 
+  geom_violin()
+
+# ridge plots 
+install.packages("ggridges")
+library(ggridges)
+ggplot(loans, aes(x = loan_amount, y = grade, fill = grade, color = grade)) + 
+  geom_density_ridges(alpha = 0.5) # density plots for diff grades, stacked on each other, of opacity = 0.5
+
+
+```
+<br>
+
+

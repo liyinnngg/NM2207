@@ -1,0 +1,74 @@
+---
+title: "Code-along and Challenge-8"
+author: "Soh Li Ying"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  'pdf_document: default': default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+
+## Code Along
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE, fig.cap = "Empty Shiny App"}
+
+knitr::include_graphics("empty_shiny_app.png")
+
+```
+<br>
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE, fig.cap = "Side bar and main bar panel"}
+
+knitr::include_graphics("sidebar_and_main_bar_panel.png")
+
+```
+<br>
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE, fig.cap = "Different headers"}
+
+knitr::include_graphics("headers.png")
+
+```
+<br>
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE, fig.cap = "Formatted text and images"}
+
+knitr::include_graphics("formatted_text_and_images.png")
+
+```
+
+## Challenge
+### Inclusion of stone image, and utilisation of ggplot to plot boxplots and graphs
+<br>
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE}
+
+knitr::include_graphics("screenshot_1.png")
+
+```
+<br>
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE}
+knitr::include_graphics("screenshot_2.png")
+```
+<br>
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE}
+knitr::include_graphics("screenshot_3.png")
+```
+<br>
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE}
+knitr::include_graphics("screenshot_4.png")
+```
+<br>
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE}
+knitr::include_graphics("screenshot_5.png")
+```
+

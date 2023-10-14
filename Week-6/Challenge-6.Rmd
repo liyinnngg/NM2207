@@ -1,0 +1,77 @@
+---
+title: "Challenge-6"
+author: "Soh Li Ying"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  'pdf_document: default': default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Questions
+<br>
+
+#### Question-1: Countdown Blastoff (While Loop)
+
+Create a program that simulates a rocket launch countdown using a while loop. Start from 10 and countdown to "Blastoff!" with a one-second delay between each countdown number. Print a message when the rocket launches.
+
+**Hint:** You may want to use `cat` command to print the countdown and `Sys.sleep` for incorporating the delay
+
+**Solutions:**
+
+```{r, eval=T,echo=TRUE}
+countdown <- 10
+
+# While loop to countdown
+while (countdown >= 0) {
+  if (countdown == 0) {
+    cat("\nBlastoff!")
+  } else {
+    cat(countdown, "...")
+  }
+  # Sleep for one second
+  Sys.sleep(1)
+  # Iterate from the back 
+  countdown <- countdown - 1
+}
+
+```
+<br>
+
+#### Question-2: Word Reverser (for Loop)
+
+Develop a program that takes a user-entered word and uses a while loop to print the word's characters in reverse order. For example, if the user enters "hello," the program should print "olleh."
+
+**Hint:** You may want to use `substr` command to access each character of the input word, and `paste` command to join the reversed letters one at a time
+
+**Solutions:**
+
+```{r, eval=T,echo=TRUE}
+# Prompt user to input a word
+user_input <- "butterly"
+
+# Track position of character
+pos <- nchar(user_input)
+
+# Initialise an empty string to store the reversed word
+reversed_word <- character()
+
+# While loop
+while (pos >= 1) {
+  # Accessing each character of the input word in current position
+  char <- substr(user_input, pos, pos)
+  # Append characters to reversed word
+  reversed_word <- paste(reversed_word, char, sep = "")
+  # Work backwards to the last letter
+  pos <- pos - 1
+}
+
+# Print the reversed word
+cat("Reversed word: ", reversed_word, "\n")
+
+```
+<br>
+

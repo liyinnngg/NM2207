@@ -1,0 +1,29 @@
+---
+title: "Challenge-1"
+author: "Soh Li Ying"
+date: "2023-08-14"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## All about me
+
+Hi, I'm liying. I am currently a year 3 student studying Business Administration, specializing in marketing and also taking up a minor in IMD.
+
+
+## Picture of me 
+
+```{r, out.height = "480px", out.width = "350px", echo = FALSE, eval = TRUE, fig.cap = "During my summer exchange at Korea University"}
+knitr::include_graphics("C:/Users/65946/Downloads/NM2207/Week-1/photo_2023-08-14_11-34-18.jpg")
+```
+
+## Rstudio layout
+
+```{r, out.height = "500px", out.width = "1080px", echo = FALSE, eval = TRUE, fig.cap = "Rstudio layout"}
+knitr::include_graphics("C:/Users/65946/Downloads/NM2207/Week-1/r-studio layout.png")
+```

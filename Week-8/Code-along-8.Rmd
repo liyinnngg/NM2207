@@ -1,0 +1,20 @@
+---
+pdf_document: default
+author: 'NM2207: Computational Media Literacy'
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+title: "Week-8: Code-along"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, eval=TRUE,echo=TRUE}
+# Installing packages 
+install.packages("shiny")
+library(shiny)
+runExample("01_hello")
+
+```
